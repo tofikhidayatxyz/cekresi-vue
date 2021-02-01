@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-8">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 pt-4">
             <div class="card">
               <div class="card-header bg-primary">
                 <h5 class="mb-0 text-white">Courier</h5>
@@ -35,7 +35,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 pt-4">
             <div class="w-100">
               <form action="?" @submit="fetchHistory">
                 <div class="d-flex">
@@ -137,7 +137,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 pt-4">
         <div class="card">
           <div class="card-header bg-primary">
             <h5 class="mb-0 text-white">History</h5>
