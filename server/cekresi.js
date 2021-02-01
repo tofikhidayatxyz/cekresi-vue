@@ -34,19 +34,19 @@ const getResi = (courier, code) => {
         if (data.error) {
           return reject(data)
         } else {
-          const det = data?.data?.detail
+          const det = data.data.detail
           return resolve({
-            code: det?.code,
-            shipper: det?.shipper,
-            service: det?.service,
-            origin: det?.origin,
-            destination: det?.destination,
-            consignee: det?.consignee,
-            date_shipment: det?.date_shipment,
-            date_received: det?.date_received,
-            receiver: det?.receiver,
+            code: det.code,
+            shipper: det.shipper,
+            service: det.service,
+            origin: det.origin,
+            destination: det.destination,
+            consignee: det.consignee,
+            date_shipment: det.date_shipment,
+            date_received: det.date_received,
+            receiver: det.receiver,
             current_position: det?.current_position,
-            history: det?.history,
+            history: dets.history,
           })
         }
       })
