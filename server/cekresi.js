@@ -45,7 +45,7 @@ const getResi = (courier, code) => {
             date_shipment: det.date_shipment,
             date_received: det.date_received,
             receiver: det.receiver,
-            current_position: det?.current_position,
+            current_position: det.current_position,
             history: dets.history,
           })
         }
