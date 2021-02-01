@@ -163,14 +163,6 @@
 
 <script lang="js">
 import moment from 'moment'
-
-const apiUrl = () => {
-  if(typeof window !== 'undefined') {
-    return window.location.href + '/api/v1'
-  }
-  return '/api/v1'
-}
-
 export default {
   data() {
     return {
@@ -187,6 +179,13 @@ export default {
     }
   },
   methods: {
+    getApiUrl(apiText) {
+      if(typeof window !== 'undefined') {
+        console.log(process.env.API_URL)
+        return process.env.API_URL + '/' + apiText
+      }
+      return apiText
+    },
     getFromHitory(formCode) {
       this.form = formCode
       this.fetchHistory()
@@ -212,7 +211,7 @@ export default {
     },
     fetchCourier() {
       this.loading = true
-      this.$axios.get('/api/v1/base')
+      this.$axios.get(this.getApiUrl('base'))
           .then(({data}) => {
             console.log(data)
             this.couriers = data
@@ -236,7 +235,7 @@ export default {
       e?.stopPropagation()
       e?.preventDefault()
       const courier = this.getCourier('jnt')
-      this.$axios.post(`${apiUrl()}/${courier?.sig}`, {
+      this.$axios.post(this.getApiUrl(`${courier?.sig}`), {
         courier: this.form.courier,
         code: this.form.code
       })
