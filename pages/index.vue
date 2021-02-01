@@ -172,8 +172,8 @@ export default {
       loadingReceipt: true,
       couriers: [],
       form: {
-        courier: 'jnt',
-        code: 'JT4310398160'
+        courier: null,
+        code: null
       },
       data: {},
       oldHistory: [],
