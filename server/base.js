@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser'
 import express from 'express'
-import BaseApi from '../apis.json'
+import BaseApi from '../lib/apis'
 const app = express()
 
 const curiers = () => {

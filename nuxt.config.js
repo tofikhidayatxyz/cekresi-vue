@@ -1,4 +1,4 @@
-import ApiData from './apis.json'
+import ApiData from './lib/apis'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
