@@ -164,7 +164,13 @@
 <script lang="js">
 import moment from 'moment'
 
-const apiUrl = '/api/v1'
+const apiUrl = () => {
+  if(typeof window !== 'undefined') {
+    return window.location.href + '/api/v1'
+  }
+  return '/api/v1'
+}
+
 export default {
   data() {
     return {
@@ -230,7 +236,7 @@ export default {
       e?.stopPropagation()
       e?.preventDefault()
       const courier = this.getCourier('jnt')
-      this.$axios.post(`${apiUrl}/${courier?.sig}`, {
+      this.$axios.post(`${apiUrl()}/${courier?.sig}`, {
         courier: this.form.courier,
         code: this.form.code
       })
