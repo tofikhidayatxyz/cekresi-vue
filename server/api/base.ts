@@ -1,6 +1,6 @@
 import express, { request } from 'express'
 import bodyParser from 'body-parser'
-import baseApi from '../../lib/apis'
+import baseApi from '../../lib/api.json'
 import { Request, Response } from 'express'
 import ResponseInitiator from '../services/response'
 
@@ -21,6 +21,8 @@ interface Courier {
 interface Param {
   search?: string
 }
+
+// console.log(baseApi)
 
 /**
  * Get all courier support data from base
