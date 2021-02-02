@@ -1,5 +1,6 @@
-import ApiData from './lib/apis'
+import ApiData from './lib/apis.ts'
 import env from 'dotenv'
+import path from 'path'
 
 // load env
 env.config()
@@ -15,7 +16,6 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
   // server api

@@ -15,6 +15,7 @@
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./*"],
+      "@lib/*": ["./lib/*"],
       "@server": ["./server/*"]
     },
     "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node", "@types/express"]

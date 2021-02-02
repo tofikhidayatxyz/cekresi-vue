@@ -17,6 +17,7 @@ interface Courier {
   icon: string
   path: string
 }
+
 interface Param {
   search?: string
 }
