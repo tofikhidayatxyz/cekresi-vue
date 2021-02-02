@@ -249,7 +249,7 @@ export default {
           consignee: {},
           history: []
         }
-        alert('Some Error hmm')
+        alert(`Some Error hmm ${JSON.stringify(e)}`)
       })
       .then(() => {
         this.loadingReceipt = false
