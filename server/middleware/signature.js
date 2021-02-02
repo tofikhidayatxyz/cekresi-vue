@@ -6,9 +6,9 @@ export default async (req, res, next) => {
   const requestToken = req.headers['x-app-token'] || null
   decodeSignature(requestToken)
     .then((decodeToken) => {
-      const isValidTime = moment(decodeToken?.valid_until).isAfter(moment())
+      const isValidTime = moment(decodeToken.valid_until).isAfter(moment())
       if (isValidTime) {
-        req.signature = decodeToken?.signature
+        req.signature = decodeToken.signature
         return next()
       }
     })
