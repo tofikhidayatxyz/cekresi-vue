@@ -2,6 +2,7 @@ import bodyParser from 'body-parser'
 import baseApi from '../../lib/api'
 import ResponseInitiator from '../services/response'
 import express from 'express'
+import signatureMiddleware from '../middleware/signature'
 
 // initialize express app
 const base = express()
@@ -34,6 +35,6 @@ const couriers = async (req, res) => {
  * Serverless start
  */
 base.use(bodyParser.json())
-base.all('/', couriers)
+base.get('/', signatureMiddleware, couriers)
 
 module.exports = base

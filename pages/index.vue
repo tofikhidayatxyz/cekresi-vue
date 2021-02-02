@@ -164,6 +164,8 @@
 
 <script lang="js">
 import moment from 'moment'
+import {encodeSignature} from '~/hooks/signature'
+
 export default {
   data() {
     return {
@@ -186,6 +188,13 @@ export default {
         return process.env.API_URL + '/' + apiText
       }
       return apiText
+    },
+    generateSignature(signature = null) {
+      return encodeSignature({
+        created_at: moment().format(),
+        valid_until: moment().add(2, 'minutes').format(),
+        signature: signature || 'none'
+      })
     },
     getFromHitory(formCode) {
       this.form = formCode
@@ -212,7 +221,11 @@ export default {
     },
     fetchCourier() {
       this.loading = true
-      this.$axios.get(this.getApiUrl('base'))
+      this.$axios.get(this.getApiUrl('base'), {
+        headers: {
+          'X-APP-TOKEN': this.generateSignature()
+        }
+      })
           .then(({data}) => {
             console.log(data)
             this.couriers = data?.data || []
@@ -236,9 +249,13 @@ export default {
       e?.stopPropagation()
       e?.preventDefault()
       const courier = this.getCourier('jnt')
-      this.$axios.post(this.getApiUrl(`${courier?.sig}`), {
+      this.$axios.post(this.getApiUrl(courier?.sig), {
         courier: this.form.courier,
         code: this.form.code
+      }, {
+        headers: {
+          'X-APP-TOKEN': this.generateSignature(courier?.sig)
+        }
       })
       .then(({data}) => {
         this.data = data?.data

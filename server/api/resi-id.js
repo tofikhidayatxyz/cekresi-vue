@@ -2,6 +2,7 @@ import bodyParser from 'body-parser'
 import express from 'express'
 import ResponseInitiator from '../services/response'
 import axios from 'axios'
+import signatureMiddleware from '../middleware/signature'
 
 // initialize express app
 const resiId = express()
@@ -13,7 +14,7 @@ const formUrlEncoded = (x) =>
  * Get all courier support data from base
  */
 
-const getReceipt = (courier, code) => {
+const getReceipt = (courier, code, signature) => {
   return new Promise((resolve, reject) => {
     axios
       .request({
@@ -59,7 +60,7 @@ const getReceipt = (courier, code) => {
 
 const parseReceipt = (req, res) => {
   const { code, courier } = req.body
-  getReceipt(courier, code)
+  getReceipt(courier, code, req?.signature)
     .then((data) => {
       // console.log(data)
       res.json(new ResponseInitiator().success().create(data))
@@ -81,6 +82,6 @@ const parseReceipt = (req, res) => {
  * Serverless start
  */
 resiId.use(bodyParser.json())
-resiId.post('/', parseReceipt)
+resiId.post('/', signatureMiddleware, parseReceipt)
 
 module.exports = resiId

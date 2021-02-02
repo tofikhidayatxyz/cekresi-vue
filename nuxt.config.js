@@ -61,6 +61,7 @@ export default {
 
   env: {
     API_URL: process.env.API_URL,
+    APP_KEY: process.env.APP_KEY,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
