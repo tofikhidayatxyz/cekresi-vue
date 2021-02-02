@@ -1,6 +1,5 @@
-import express, { request } from 'express'
 import bodyParser from 'body-parser'
-import { Request, Response } from 'express'
+import express, { Request, Response } from 'express'
 import ResponseInitiator from '../services/response'
 import axios from 'axios'
 

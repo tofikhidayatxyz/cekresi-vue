@@ -1,7 +1,6 @@
-import express, { request } from 'express'
 import bodyParser from 'body-parser'
 import baseApi from '../../lib/api.json'
-import { Request, Response } from 'express'
+import express, { Request, Response } from 'express'
 import ResponseInitiator from '../services/response'
 
 // initialize express app
