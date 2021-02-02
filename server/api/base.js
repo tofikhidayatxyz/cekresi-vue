@@ -1,5 +1,5 @@
 import bodyParser from 'body-parser'
-import baseApi from '../../lib/api.json'
+import baseApi from '../../lib/api'
 import ResponseInitiator from '../services/response'
 import express from 'express'
 
