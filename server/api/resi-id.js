@@ -1,30 +1,19 @@
 import bodyParser from 'body-parser'
-import express, { Request, Response } from 'express'
+import express from 'express'
 import ResponseInitiator from '../services/response'
 import axios from 'axios'
 
 // initialize express app
 const resiId = express()
-const apiUrl: string =
-  'https://pluginongkoskirim.com/cek-tarif-ongkir/front/resi-amp'
-
-/**
- * Make interface
- */
-
-interface RequestPayload {
-  courier?: string
-  code?: string
-}
-
+const apiUrl = 'https://pluginongkoskirim.com/cek-tarif-ongkir/front/resi-amp'
 //
-const formUrlEncoded = (x: any) =>
+const formUrlEncoded = (x) =>
   Object.keys(x).reduce((p, c) => p + `&${c}=${encodeURIComponent(x[c])}`, '')
 /**
  * Get all courier support data from base
  */
 
-const getReceipt = (courier: string, code: string) => {
+const getReceipt = (courier, code) => {
   return new Promise((resolve, reject) => {
     axios
       .request({
@@ -42,7 +31,7 @@ const getReceipt = (courier: string, code: string) => {
           resi: code,
         }),
       })
-      .then(({ data }: { data: any }) => {
+      .then(({ data }) => {
         if (data.error) {
           return reject(data)
         } else {
@@ -62,15 +51,15 @@ const getReceipt = (courier: string, code: string) => {
           })
         }
       })
-      .catch((err: any) => {
+      .catch((err) => {
         return reject(err)
       })
   })
 }
 
-const parseReceipt = (req: Request, res: Response) => {
-  const { code, courier }: RequestPayload = req.body
-  getReceipt(courier as string, code as string)
+const parseReceipt = (req, res) => {
+  const { code, courier } = req.body
+  getReceipt(courier, code)
     .then((data) => {
       // console.log(data)
       res.json(new ResponseInitiator().success().create(data))

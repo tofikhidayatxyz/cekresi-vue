@@ -1,81 +1,83 @@
 export default class Response {
-  code!: number
-  message!: string
+  constructor() {
+    this.code = 200
+    this.message = 'Ok'
+  }
   // contrutor
   // success
-  public success(text: string = '') {
+  success(text) {
     this.code = 200
     this.message = text || 'OK'
     return this
   }
   // bad request
-  public badRequest(text: string = '') {
+  badRequest(text) {
     this.code = 400
     this.message = text || 'Bad Request'
     return this
   }
   // unauthorize
-  public unauthorize(text: string = '') {
+  unauthorize(text) {
     this.code = 401
     this.message = text || 'Unauthorized'
     return this
   }
   // forbidend
-  public forbidden(text: string = '') {
+  forbidden(text) {
     this.code = 403
     this.message = text || 'Forbidden'
     return this
   }
   // not found
-  public notFound(text: string = '') {
+  notFound(text) {
     this.code = 404
     this.message = text || 'Not Found'
     return this
   }
   // not found
-  public notAllowed(text: string = '') {
+  notAllowed(text) {
     this.code = 405
     this.message = text || 'Method Not Allowed'
     return this
   }
 
-  public timeout(text: string = '') {
+  timeout(text) {
     this.code = 408
     this.message = text || 'Request Timeout'
     return this
   }
   // timeout
-  public unproccesableEntity(text: string = '') {
+  unproccesableEntity(text) {
     this.code = 422
     this.message = text || 'Unprocessable Entity'
     return this
   }
   // internal server error
-  public error(text: string = '') {
+  error(text) {
     this.code = 500
     this.message = text || 'Internal Server Error'
     return this
   }
   // internal server error
-  public notImplemented(text: string = '') {
+  notImplemented(text) {
     this.code = 501
     this.message = text || 'Not Implemented'
     return this
   }
   // bad gateway
-  public badGateway(text: string = '') {
+  badGateway(text) {
     this.code = 502
     this.message = text || 'Unprocessable Entity'
     return this
   }
   // unavailable
-  public unavailable(text: string = '') {
+  unavailable(text) {
     this.code = 503
     this.message = text || 'Service Unavailable'
     return this
   }
   // create response
-  public create(data: any) {
+  create(data) {
     const fieldName = typeof data == 'string' ? 'message' : 'data'
     return {
       code: this.code,
