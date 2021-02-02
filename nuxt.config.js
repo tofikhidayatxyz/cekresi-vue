@@ -22,7 +22,7 @@ export default {
   serverMiddleware: [
     {
       path: 'api/v1/base',
-      handler: '~server/base.js',
+      handler: '~server/api/base.ts',
     },
     ...ApiData,
   ],

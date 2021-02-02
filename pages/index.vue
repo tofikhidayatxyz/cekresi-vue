@@ -214,7 +214,7 @@ export default {
       this.$axios.get(this.getApiUrl('base'))
           .then(({data}) => {
             console.log(data)
-            this.couriers = data
+            this.couriers = data?.data || []
           })
           .catch(e => {
             console.error(e)
@@ -240,7 +240,7 @@ export default {
         code: this.form.code
       })
       .then(({data}) => {
-        this.data = data
+        this.data = data?.data
       })
       .catch(e => {
         this.data = {
