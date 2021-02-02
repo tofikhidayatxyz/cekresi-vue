@@ -1,4 +1,4 @@
-import ApiData from './lib/apis.ts'
+import ApiData from './lib/apis'
 import env from 'dotenv'
 import path from 'path'
 
