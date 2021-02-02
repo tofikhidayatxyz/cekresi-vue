@@ -60,7 +60,7 @@ const getReceipt = (courier, code, signature) => {
 
 const parseReceipt = (req, res) => {
   const { code, courier } = req.body
-  getReceipt(courier, code, req?.signature)
+  getReceipt(courier, code, req.signature)
     .then((data) => {
       // console.log(data)
       res.json(new ResponseInitiator().success().create(data))
