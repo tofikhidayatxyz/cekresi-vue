@@ -20,6 +20,7 @@
                         type="radio"
                         :id="itm.value"
                         name="courier"
+                        :value="itm.value"
                         class="custom-control-input"
                         v-model="form.courier"
                       />
