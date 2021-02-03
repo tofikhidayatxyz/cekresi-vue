@@ -221,7 +221,7 @@ export default {
     },
     fetchCourier() {
       this.loading = true
-      this.$axios.get(this.getApiUrl('base'), {
+      this.$axios.post(this.getApiUrl('couriers'), {}, {
         headers: {
           'X-APP-TOKEN': this.generateSignature()
         }
@@ -248,13 +248,13 @@ export default {
       this.loadingReceipt = true
       e?.stopPropagation()
       e?.preventDefault()
-      const courier = this.getCourier('jnt')
-      this.$axios.post(this.getApiUrl(courier?.sig), {
+      const courier = this.getCourier(this.form.courier)
+      this.$axios.post(this.getApiUrl(`receipt/${courier?.signature}`), {
         courier: this.form.courier,
         code: this.form.code
       }, {
         headers: {
-          'X-APP-TOKEN': this.generateSignature(courier?.sig)
+          'X-APP-TOKEN': this.generateSignature(courier?.signature)
         }
       })
       .then(({data}) => {

@@ -18,14 +18,6 @@ export default {
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
-  // server api
-  serverMiddleware: [
-    {
-      path: 'api/v1/base',
-      handler: '~server/api/base.js',
-    },
-    ...ApiData,
-  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
