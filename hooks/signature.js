@@ -29,3 +29,21 @@ export const decodeSignature = (encrypted) => {
     }
   })
 }
+
+export const encodeUrlId = (payload) => {
+  const stringPayload = JSON.stringify(payload)
+  const encryptedKey = CryptoJS.AES.encrypt(
+    stringPayload,
+    process.env.URL_ENCODE_KEY
+  ).toString()
+  return encryptedKey
+}
+
+export const decodeUrlId = (payload) => {
+  const stringPayload = JSON.stringify(payload)
+  const encryptedKey = CryptoJS.AES.decrypt(
+    stringPayload,
+    process.env.URL_ENCODE_KEY
+  ).toString()
+  return encryptedKey
+}

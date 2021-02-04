@@ -132,6 +132,7 @@ export default {
         })
         .then(() => {
           this.loading = false
+          this.setupByPage()
         })
     },
     fetchData(e) {
@@ -183,10 +184,27 @@ export default {
           this.doneFetch = true
         })
     },
+    setupByPage() {
+      console.log(this.$route)
+      const signatureParam = this.$route.params.signature
+      const valueQuery = this.$route.query.courier
+      const codeQuery = this.$route.query.code
+      const courierData = this.couriers.find(
+        (itm) => itm.signature == signatureParam && itm.value == valueQuery
+      )
+      if (courierData) {
+        this.form = {
+          code: codeQuery,
+          courier: courierData,
+        }
+        this.fetchData()
+      }
+    },
   },
   mounted() {
     this.fetchCourier()
     this.oldHistory = getStorage()
+    // setup
   },
 }
 </script>

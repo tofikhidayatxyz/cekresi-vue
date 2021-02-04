@@ -160,7 +160,7 @@ export default {
         )
         .then(({ data }) => {
           this.data = data?.data
-          this.copyUri = `${window.location.origin}/${this.form.courier.signature}?courier=${this.form.courier.value}&code=${this.form.code}`
+          this.copyUri = `${window.location.origin}/${this.form.courier.signature}?courier=${this.form.courier.value}&=code${this.form.code}`
           // attack to storage
           setStorage({
             code: this.form.code,
